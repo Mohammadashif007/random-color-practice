@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const RandomColor = () => {
     const [typeOfColor, setTypeOfColor] = useState("hex");
@@ -35,7 +35,17 @@ const RandomColor = () => {
         setColor(haxColor);
     };
 
-    const handleCreateRgbColor = () => {};
+    const handleCreateRgbColor = () => {
+        const r = randomColorUtility(256)
+        const g = randomColorUtility(256)
+        const b = randomColorUtility(256)
+        setColor(`rgb(${r}, ${g}, ${b})`)
+    };
+
+    useEffect(() => {
+        if(typeOfColor === 'rgb') handleCreateRgbColor()
+        else handleCreateHaxColor()
+    }, [typeOfColor])
 
     return (
         <div style={{textAlign: "center", height: "100vh", width: "100vw", background: color }}>
@@ -54,6 +64,11 @@ const RandomColor = () => {
             >
                 Generate Random Color
             </button>
+            <div style={{display: 'flex',
+            alignItems: 'center', justifyContent: 'center', flexDirection: 'column',  fontSize: '30px', color: '#fff'}}>
+                <h2>{typeOfColor} Color</h2>
+                <h1>{color}</h1>
+            </div>
         </div>
     );
 };
