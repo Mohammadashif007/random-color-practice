@@ -52,7 +52,7 @@ const RandomColor = () => {
             <button onClick={() => setTypeOfColor("hex")}>
                 Create hax color
             </button>
-            <button onClick={() => setTypeOfColor("rbg")}>
+            <button onClick={() => setTypeOfColor("rgb")}>
                 Create rgb color
             </button>
             <button
@@ -66,7 +66,7 @@ const RandomColor = () => {
             </button>
             <div style={{display: 'flex',
             alignItems: 'center', justifyContent: 'center', flexDirection: 'column',  fontSize: '30px', color: '#fff'}}>
-                <h2>{typeOfColor} Color</h2>
+                <h2>{typeOfColor === 'rgb'? "RGB color": "HEX color"} Color</h2>
                 <h1>{color}</h1>
             </div>
         </div>
